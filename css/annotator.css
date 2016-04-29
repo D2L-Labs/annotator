@@ -24,7 +24,7 @@
 /* Images
 -------------------------------------------------------------------- */
 
-.annotator-adder {
+.annotator-adder, .annotator-keyword {
 	background-image: url(../img/annotator-icon-sprite.png);
 	background-repeat: no-repeat;
 }
@@ -61,6 +61,7 @@
 /* NB: If you change the list of classes for which z-index is set,
        you should update Annotator._setupDynamicStyle() */
 .annotator-adder,
+.annotator-keyword
 .annotator-outer,
 .annotator-notice {
 	z-index: 1020;
@@ -72,6 +73,7 @@
 
 .annotator-adder,
 .annotator-outer,
+.annotator-keyword
 .annotator-widget,
 .annotator-notice {
 	position: absolute;
@@ -87,7 +89,7 @@
 /* Annotator Adder
 -------------------------------------------------------------------- */
 
-.annotator-adder {
+.annotator-adder, .annotator-keyword {
 	margin-top: -48px;
 	margin-left: -24px;
 	width: 48px;
@@ -95,15 +97,15 @@
 	background-position: left top;
 }
 
-.annotator-adder:hover {
+.annotator-adder:hover, .annotator-keyword {
 	background-position: center top;
 }
 
-.annotator-adder:active {
+.annotator-adder:active, .annotator-keyword:active {
 	background-position: center right;
 }
 
-.annotator-adder button {
+.annotator-adder button, .annotator-keyword button {
 	display: block;
 	width: 36px;
 	height: 41px;
@@ -115,7 +117,7 @@
 }
 
 /* Annotator Widget
-   
+
    This applies to both the Viewer and the Editor
 -------------------------------------------------------------------- */
 
@@ -403,19 +405,19 @@
 	    rgb(220, 220, 220) 60%,
 	    rgb(210, 210, 210)
 	);
-	-webkit-box-shadow: 
+	-webkit-box-shadow:
 		inset 1px   0   0 rgba(255, 255, 255, 0.7),
 		inset -1px  0   0 rgba(255, 255, 255, 0.7),
 		inset 0     1px 0 rgba(255, 255, 255, 0.7);
-	-moz-box-shadow: 
+	-moz-box-shadow:
 		inset 1px   0   0 rgba(255, 255, 255, 0.7),
 		inset -1px  0   0 rgba(255, 255, 255, 0.7),
 		inset 0     1px 0 rgba(255, 255, 255, 0.7);
-	-o-box-shadow: 
+	-o-box-shadow:
 		inset 1px   0   0 rgba(255, 255, 255, 0.7),
 		inset -1px  0   0 rgba(255, 255, 255, 0.7),
 		inset 0     1px 0 rgba(255, 255, 255, 0.7);
-	box-shadow: 
+	box-shadow:
 		inset 1px   0   0 rgba(255, 255, 255, 0.7),
 		inset -1px  0   0 rgba(255, 255, 255, 0.7),
 		inset 0     1px 0 rgba(255, 255, 255, 0.7);
@@ -475,7 +477,7 @@
 	    rgb(190, 190, 190) 50%,
 	    rgb(210, 210, 210)
 	);
-	-webkit-box-shadow: 
+	-webkit-box-shadow:
 		inset 0 0 5px rgba(255, 255, 255, 0.2),
 		inset 0 0 1px rgba(255, 255, 255, 0.8);
 	-moz-box-shadow:
@@ -718,13 +720,13 @@
 	-moz-border-radius: 0;
 	-o-border-radius: 0;
 	border-radius: 0;
-	-webkit-box-shadow: 
+	-webkit-box-shadow:
 		inset 0 -1px 0 rgba(255, 255, 255, 0.3);
-	-moz-box-shadow: 
+	-moz-box-shadow:
 		inset 0 -1px 0 rgba(255, 255, 255, 0.3);
-	-o-box-shadow: 
+	-o-box-shadow:
 		inset 0 -1px 0 rgba(255, 255, 255, 0.3);
-	box-shadow: 
+	box-shadow:
 		inset 0 -1px 0 rgba(255, 255, 255, 0.3);
 }
 
@@ -782,15 +784,15 @@
 	-moz-border-radius: 0 10px 10px 0;
 	-o-border-radius: 0 10px 10px 0;
 	border-radius:  0 10px 10px 0;
-	-webkit-box-shadow: 
+	-webkit-box-shadow:
 		inset 0 1px 1px rgba(0, 0, 0, 0.2);
-	-moz-box-shadow: 
+	-moz-box-shadow:
 		inset 0 1px 1px rgba(0, 0, 0, 0.2);
-	-o-box-shadow: 
+	-o-box-shadow:
 		inset 0 1px 1px rgba(0, 0, 0, 0.2);
-	box-shadow: 
+	box-shadow:
 		inset 0 1px 1px rgba(0, 0, 0, 0.2);
-	
+
 }
 
 .annotator-filter .annotator-filter-property input:focus {
@@ -825,7 +827,7 @@
 	text-indent: -900px;
 	width: 20px;
 	min-height: 22px;
-	-webkit-box-shadow: 
+	-webkit-box-shadow:
 		inset 0 0 5px rgba(255, 255, 255, 0.2),
 		inset 0 0 1px rgba(255, 255, 255, 0.8);
 	-moz-box-shadow:

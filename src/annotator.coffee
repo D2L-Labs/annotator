@@ -17,6 +17,7 @@ class Annotator extends Delegator
 
   html:
     adder:   '<div class="annotator-adder"><button>' + _t('Annotate') + '</button></div>'
+    keyword: '<div class="annotator-keyword"><button>Keyword</button></div>'
     wrapper: '<div class="annotator-wrapper"></div>'
 
   options: # Configuration options
@@ -71,6 +72,8 @@ class Annotator extends Delegator
 
     # Create adder
     this.adder = $(this.html.adder).appendTo(@wrapper).hide()
+    this.keyword = $(this.html.keyword).appendTo(@wrapper).hide()
+
 
     Annotator._instances.push(this)
 
@@ -165,7 +168,7 @@ class Annotator extends Delegator
     max = Math.max(max, 1000)
 
     style.text [
-      ".annotator-adder, .annotator-outer, .annotator-notice {"
+      ".annotator-adder, .annotator-keyword, .annotator-keyword, .annotator-outer, .annotator-notice {"
       "  z-index: #{max + 20};"
       "}"
       ".annotator-filter {"
@@ -190,6 +193,7 @@ class Annotator extends Delegator
     $('#annotator-dynamic-style').remove()
 
     @adder.remove()
+    @keyword.remove()
     @viewer.destroy()
     @editor.destroy()
 
@@ -481,6 +485,7 @@ class Annotator extends Delegator
   #
   # Returns itself to allow chaining.
   showEditor: (annotation, location) =>
+    console.log('showing editor');
     @editor.element.css(location)
     @editor.load(annotation)
     this.publish('annotationEditorShown', [@editor, annotation])
@@ -530,6 +535,7 @@ class Annotator extends Delegator
   # Returns nothing.
   startViewerHideTimer: =>
     # Don't do this if timer has already been set by another annotation.
+    console.log('hide timer');
     if not @viewerHideTimer
       @viewerHideTimer = setTimeout @viewer.hide, 250
 
@@ -579,8 +585,12 @@ class Annotator extends Delegator
       @adder
         .css(Util.mousePosition(event, @wrapper[0]))
         .show()
+      @keyword
+        .css(Util.mousePosition(event, @wrapper[0]))
+        .show()
     else
       @adder.hide()
+      @keyword.hide()
 
   # Public: Determines if the provided element is part of the annotator plugin.
   # Useful for ignoring mouse actions on the annotator elements.
@@ -612,6 +622,7 @@ class Annotator extends Delegator
   #
   # Returns nothing.
   onHighlightMouseover: (event) =>
+    console.log('highlight mouseover');
     # Cancel any pending hiding of the viewer.
     this.clearViewerHideTimer()
 
@@ -637,6 +648,7 @@ class Annotator extends Delegator
   #
   # Returns nothing.
   onAdderMousedown: (event) =>
+    console.log('adder mouse down');
     event?.preventDefault()
     @ignoreMouseup = true
 
@@ -651,8 +663,10 @@ class Annotator extends Delegator
     event?.preventDefault()
 
     # Hide the adder
+    console.log('Adder clicked now');
     position = @adder.position()
     @adder.hide()
+    @keyword.hide()
 
     # Show a temporary highlight so the user can see what they selected
     # Also extract the quotation and serialize the ranges
